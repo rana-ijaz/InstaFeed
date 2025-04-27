@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+service FeedService {
+  rpc GetPosts (GetPostsRequest) returns (GetPostsResponse);
+}
+
+message GetPostsRequest {
+  int32 page = 1;
+  int32 pageSize = 4;
+}
+
+message GetPostsResponse {
+  repeated Post posts = 1;
+}
+
+message Post {
+  string id = 1;
+  string caption = 2;
+  string mediaType = 3; // "image", "video", "imageAndVideo"
+  string imageName = 4;
+  string videoName = 5;
+  int64 timestamp = 6; // Epoch milliseconds
+}
+
